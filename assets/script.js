@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var gifs = ["cats", "cute animals", "dogs", "funny", "memes"];
+    var gifs = ["cats", "cute animals", "dogs", "funny", "cartoons"];
 
     function renderButtons() {
         $("#gif-buttons").empty();
@@ -30,7 +30,14 @@ $(document).ready(function () {
             $("#gifs").empty();
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
+                var p = $("<p>").text("rating: " + results[i].rating);
                 var gifImg = $("<img>");
+                gifImg.attr("src",results[i].images.fixed_height.url);
+
+                gifDiv.prepend(p);
+                gifDiv.prepend(gifImg);
+                $("#gifs").prepend(gifDiv);
             }
         })
     })
+})
